@@ -7,7 +7,6 @@ const Post = () => {
     return (
         <MainLayout>
             <h1>{router.query.title}</h1>
-            <p>{title}</p>
         </MainLayout>
     );
 }
