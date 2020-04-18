@@ -10,7 +10,7 @@ const PostLink = (props) => (
 export default function Index() {
   return (
     <>
-      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+      {/* <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> */}
       <Navbar></Navbar>
       <div>
         {/* {text} */}
