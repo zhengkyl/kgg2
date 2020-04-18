@@ -7,7 +7,7 @@ const Post = () => {
     return (
         <MainLayout>
             <h1>{router.query.title}</h1>
-            <p>default post content</p>
+            <p>{title}</p>
         </MainLayout>
     );
 }
