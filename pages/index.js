@@ -10,7 +10,7 @@ const PostLink = (props) => (
 export default function Index() {
   return (
     <>
-      {/* <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> */}
+      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       <Navbar></Navbar>
       <div>
         {/* {text} */}
@@ -18,16 +18,17 @@ export default function Index() {
         <PostLink id="test-id-lamo1" />
         <PostLink id="test-id-lamo2" />
       </div>
-      {/* <script>
-        if (window.netlifyIdentity){" "}
-        {window.netlifyIdentity.on("init", (user) => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        })}
-      </script> */}
+      <script>{
+        `if (window.netlifyIdentity) {
+          window.netlifyIdentity.on("init", user => {
+            if (!user) {
+              window.netlifyIdentity.on("login", () => {
+                document.location.href = "/admin/";
+              });
+            }
+          })
+        }`}
+      </script>
     </>
   );
 }
