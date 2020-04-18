@@ -7,6 +7,7 @@ const Post = () => {
     const { title, cats } = attributes;
     return (
         <MainLayout>
+            {/* <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> */}
             <h1>{router.query.id}</h1>
             <p>{title}</p>
             <HomeContent/>
