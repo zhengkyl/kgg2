@@ -4,9 +4,11 @@ backend:
 media_folder: public/img
 public_folder: img
 publish_mode: editorial_workflow
+logo_url: https://raw.githubusercontent.com/zhengkyl/kgg-web/master/public/img/spin.gif
 collections:
   - name: "people"
     label: "People"
+    label_singular: "Person"
     folder: "content/people"
     create: true
     slug: "{{name}}"
@@ -23,6 +25,7 @@ collections:
 
   - name: "blog"
     label: "Blog"
+    label_singular: "Blog Post"
     folder: "content/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
@@ -39,7 +42,7 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Featured Image", name: "image", widget: "image" }
       - { label: "Body", name: "body", widget: "markdown" }
-      
+
   - name: "pages"
     label: "Pages"
     files:
