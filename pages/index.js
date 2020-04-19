@@ -13,6 +13,7 @@ export default function Index() {
     if (window.netlifyIdentity) {
       console.log("here");
       window.netlifyIdentity.on("init", user => {
+        console.log("init");
         if (!user) {
           console.log("ho");
           window.netlifyIdentity.on("login", () => {
