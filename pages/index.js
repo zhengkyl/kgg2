@@ -11,22 +11,22 @@ const PostLink = (props) => (
 export default function Index() {
   useEffect(() => {
     if (window.netlifyIdentity) {
-      console.log("here");
-      window.netlifyIdentity.on("init", (user) => {
-        console.log("init");
-        if (!user) {
-          console.log("ho");
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-      window.netlifyIdentity.on("init", (user) => console.log("init", user));
-      window.netlifyIdentity.on("login", (user) => console.log("login", user));
-      window.netlifyIdentity.on("logout", () => console.log("Logged out"));
-      window.netlifyIdentity.on("error", (err) => console.error("Error", err));
-      window.netlifyIdentity.on("open", () => console.log("Widget opened"));
-      window.netlifyIdentity.on("close", () => console.log("Widget closed"));
+      // console.log("here");
+      // window.netlifyIdentity.on("init", (user) => {
+      //   console.log("init");
+      //   if (!user) {
+      //     console.log("ho");
+      //     window.netlifyIdentity.on("login", () => {
+      //       document.location.href = "/admin/";
+      //     });
+      //   }
+      // });
+      // window.netlifyIdentity.on("init", (user) => console.log("init", user));
+      // window.netlifyIdentity.on("login", (user) => console.log("login", user));
+      // window.netlifyIdentity.on("logout", () => console.log("Logged out"));
+      // window.netlifyIdentity.on("error", (err) => console.error("Error", err));
+      window.netlifyIdentity.on("open", () => document.location.href = "/admin/");
+      // window.netlifyIdentity.on("close", () => console.log("Widget closed"));
     }
   }, []);
   return (
