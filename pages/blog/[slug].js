@@ -5,15 +5,17 @@ const glob = require("glob")
 
 export default function Post(props) {
   const router = useRouter();
-  const { title, cats } = attributes;
+  // const { title, cats } = attributes;
   return (
     <MainLayout>
       {/* <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> */}
       <h1>{router.query.slug}</h1>
-      <p>{title}</p>
+      {/* <p>{title}</p> */}
+      <p>{props.title}</p>
       <p>{props.author}</p>
-      <props.react></props.react>
-      <HomeContent />
+      {/* <p>{props.title}</p> */}
+      {/* {props.react()} */}
+      {/* <HomeContent /> */}
     </MainLayout>
   );
 }
@@ -23,7 +25,8 @@ export async function getStaticProps({ ...ctx }) {
   const content = await import(`../../content/blog/${slug}.md`);
 
   return {
-    props: { ...content.attributes, react: content.react },
+    props: { ...content.attributes},
+    // props: { ...content.attributes, react: content.react },
   };
 }
 
