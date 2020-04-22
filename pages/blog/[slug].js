@@ -16,6 +16,10 @@ export default function Post(props) {
       {/* <p>{props.title}</p> */}
       {/* {props.react()} */}
       {/* <HomeContent /> */}
+
+
+      {/* https://www.netlifycms.org/docs/customization/ */}
+      {/* https://dev.to/tinacms/creating-a-markdown-blog-with-next-js-52hk */}
     </MainLayout>
   );
 }
