@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: `#333`,
     marginTop: 4,
     marginBottom: 4,
-    transition: `0.4s`,
+    transition: `0.225s`,
   },
   bar1: {
     WebkitTransform: `translate(0,7px) rotate(45deg)`,
