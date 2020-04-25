@@ -1,8 +1,9 @@
 import Navbar from "../components/Navbar";
 import Link from "next/link";
 import { useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles";
 import MainLayout from "../components/MainLayout";
+import Head from "next/head"
 
 const PostLink = (props) => (
   <Link href="/blog/[id]" as={`/blog/${props.id}`}>
@@ -31,15 +32,17 @@ export default function Index() {
   const classes = useStyles();
 
   return (
-    <MainLayout title={"Home | KGG"}>
-      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-      <Navbar></Navbar>
+    <>
+      <Head>
+        <title>Home | KGG</title>
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+      </Head>
       <div className={classes.root}>
         {/* {text} */}
         {/* <PostLink id="test-id-lamo" />
         <PostLink id="test-id-lamo1" />
         <PostLink id="test-id-lamo2" /> */}
       </div>
-    </MainLayout>
+    </>
   );
 }

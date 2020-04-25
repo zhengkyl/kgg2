@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "../components/theme";
+import { lightTheme, darkTheme } from "../src/theme";
+// import useDarkMode from "../src/useDarkMode";
+import MainLayout from "../components/MainLayout";
+import { useEffect } from "react";
 
 /*
 https://github.com/mui-org/material-ui/tree/master/examples/nextjs
@@ -13,8 +16,13 @@ I'm gonna be honest, I don't really understand this
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
+  
+  const [darkMode, setDarkMode] = useState(false)
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  }
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
@@ -23,10 +31,12 @@ export default function MyApp(props) {
   }, []);
   return (
     <React.Fragment>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+        {/* CssBaseline changes the background color in addition to other stuff */}
         <CssBaseline />
-        <Component {...pageProps} />
+        <MainLayout toggleTheme={toggleTheme} darkMode={darkMode}>
+          <Component {...pageProps} />
+        </MainLayout>
       </ThemeProvider>
     </React.Fragment>
   );

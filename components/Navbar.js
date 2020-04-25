@@ -1,5 +1,6 @@
 import Link from "next/link";
-import MenuIcon from "@material-ui/icons/Menu";
+import SunIcon from "@material-ui/icons/Brightness5";
+import MoonIcon from "@material-ui/icons/NightsStay";
 import {
   AppBar,
   Drawer,
@@ -14,7 +15,7 @@ import {
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 // import kggLogo from "/img/kgg_black.png";
-import AnimatedMenuIcon from "./AnimatedMenuIcon"
+import AnimatedMenuIcon from "./AnimatedMenuIcon";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
     left: `50%`,
     transform: `translate(-50%, -50%)`,
   },
-  
 }));
 
 const pages = [
@@ -102,14 +102,19 @@ export default function Navbar(props) {
   return (
     <>
       <HideOnScroll {...props}>
-        <AppBar elevation={1} color="primary.main" position="fixed" className={classes.appBar}>
+        <AppBar elevation={1} position="fixed" color="default" className={classes.appBar}>
           <Toolbar className={classes.toolbar}>
             <IconButton onClick={toggleDrawer(!open)} edge="start">
               <AnimatedMenuIcon open={open}></AnimatedMenuIcon>
             </IconButton>
-            <div>
+            {props.darkMode ? (
+              <img src="/img/kgg_white.png" className={classes.logo} />
+            ) : (
               <img src="/img/kgg_black.png" className={classes.logo} />
-            </div>
+            )}
+            <IconButton onClick={props.toggleTheme}>
+              {props.darkMode ? <MoonIcon></MoonIcon> : <SunIcon></SunIcon>}
+            </IconButton>
           </Toolbar>
         </AppBar>
       </HideOnScroll>

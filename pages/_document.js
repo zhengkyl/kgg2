@@ -1,7 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 import { ServerStyleSheets } from "@material-ui/styles";
-import theme from "../components/theme"
+// import theme from "../components/theme"
+// import {darkTheme} from "../src/theme"
 
 class MyDocument extends Document {
   render() {
@@ -12,7 +13,7 @@ class MyDocument extends Document {
             name="viewport"
             content="minimum-scale=1, initial-scale=1, width=device-width"
           />
-          <meta name="theme-color" content={theme.palette.primary.main} />
+          {/* <meta name="theme-color" content={darkTheme.palette.primary.main} /> */}
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
