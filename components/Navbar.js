@@ -3,6 +3,7 @@ import SunIcon from "@material-ui/icons/Brightness5";
 import MoonIcon from "@material-ui/icons/NightsStay";
 import {
   AppBar,
+  Button,
   Drawer,
   IconButton,
   Toolbar,
@@ -11,6 +12,8 @@ import {
   ListItemText,
   Slide,
   useScrollTrigger,
+  Typography,
+  Hidden,
 } from "@material-ui/core";
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
@@ -25,19 +28,26 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1400,
   },
   drawer: {},
-  list: {
-    width: 250,
-  },
+  list: {padding:0},
   listItem: {
-    paddingLeft: 36,
-    paddingRight: 36,
+    // flexDirection:'row',
+    // paddingLeft: 36,
+    // paddingRight: 36,
+    // paddingTop:16,
+    // paddingBottom:16,
+    // textAlign:'center',
+    // width:'120px',
+    [theme.breakpoints.up('md')]:{
+      display: "inline-block",
+      cursor: "pointer",
+      width: "initial",
+      paddingTop:16,
+      paddingBottom:16,
+    }
   },
-  listText: {
-    fontSize: `2rem`,
-  },
-  toolbar: {
-    //   padding:0,
-  },
+  // listText: {
+  //   fontSize: `2rem`,
+  // },
   logo: {
     height: 20,
     width: `auto`,
@@ -46,6 +56,23 @@ const useStyles = makeStyles((theme) => ({
     left: `50%`,
     transform: `translate(-50%, -50%)`,
   },
+  link: {
+    color: "black",
+    height: "100%",
+    textDecoration: `none`,
+    "&:hover": {
+      textDecoration: `underline`,
+    },
+    "&:visited": {
+      color: "inherit",
+    },
+    "&:active": {
+      color: "inherit",
+    },
+  },
+  toolbar: {
+    flexDirection:'row-reverse',
+  }
 }));
 
 const pages = [
@@ -91,10 +118,22 @@ export default function Navbar(props) {
           <ListItem button key={page.title} className={classes.listItem}>
             <ListItemText className={classes.listText}>
               {page.title}
-              {/* <a title={page.title}>{page.title}</a> */}
             </ListItemText>
           </ListItem>
         </Link>
+      ))}
+    </List>
+  );
+  const list2 = () => (
+    <List className={classes.list}>
+      {pages.map((page) => (
+        <ListItem key={page.title} className={classes.listItem}>
+          <Link href={page.path}>
+            <a title={page.title} className={classes.link}>
+              {page.title}
+            </a>
+          </Link>
+        </ListItem>
       ))}
     </List>
   );
@@ -102,11 +141,19 @@ export default function Navbar(props) {
   return (
     <>
       <HideOnScroll {...props}>
-        <AppBar elevation={1} position="fixed" color="default" className={classes.appBar}>
+        <AppBar
+          elevation={1}
+          position="fixed"
+          color="default"
+          className={classes.appBar}
+        >
           <Toolbar className={classes.toolbar}>
-            <IconButton onClick={toggleDrawer(!open)} edge="start">
+            <Hidden mdUp>
+              <IconButton onClick={toggleDrawer(!open)} edge="start">
               <AnimatedMenuIcon open={open}></AnimatedMenuIcon>
             </IconButton>
+            </Hidden>
+            
             {props.darkMode ? (
               <img src="/img/kgg_white.png" className={classes.logo} />
             ) : (
@@ -115,18 +162,31 @@ export default function Navbar(props) {
             <IconButton onClick={props.toggleTheme}>
               {props.darkMode ? <MoonIcon></MoonIcon> : <SunIcon></SunIcon>}
             </IconButton>
+            {/* {pages.map((page) => (
+              <Link href={page.path}>
+                <a title={page.title} className={classes.link}>
+                  {page.title}
+                </a>
+              </Link>
+            ))} */}
+            <Hidden smDown>
+              {list2()}
+            </Hidden>
+            
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-
-      <Drawer
+      <Hidden mdUp>
+        <Drawer
         className={classes.drawer}
-        anchor="left"
+        anchor="right"
         open={open}
         onClose={toggleDrawer(false)}
       >
         {list()}
       </Drawer>
+      </Hidden>
+      
     </>
   );
 }
