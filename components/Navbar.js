@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
   link: {
     fontSize:'1.25rem',
     fontWeight:300,
-    color: "black",
+    color: `${theme.palette.text.primary}`,
     height: "100%",
     textDecoration: `none`,
     paddingTop: theme.spacing(2),
