@@ -26,7 +26,7 @@ export default function Post(props) {
 
 export async function getStaticProps({ ...ctx }) {
   const { slug } = ctx.params;
-  const content = await import(`../../content/blog/${slug}.md`);
+  const content = await import(`../../content/news/${slug}.md`);
 
   return {
     props: { ...content.attributes},
@@ -35,13 +35,13 @@ export async function getStaticProps({ ...ctx }) {
 }
 
 export async function getStaticPaths() {
-  const posts = glob.sync("content/blog/**/*.md");
+  const posts = glob.sync("content/news/**/*.md");
 
   const slugs = posts.map((file) =>
     file.split("/")[2].replace(/ /g, "-").slice(0, -3).trim()
   );
 
-  const paths = slugs.map(slug => `/blog/${slug}`)
+  const paths = slugs.map(slug => `/news/${slug}`)
 
   return {
     paths,

@@ -38,6 +38,7 @@ export default function Index() {
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       </Head>
       <div className={classes.root}>
+        asoif;jaewfoa;fjewfl
         {/* {text} */}
         {/* <PostLink id="test-id-lamo" />
         <PostLink id="test-id-lamo1" />

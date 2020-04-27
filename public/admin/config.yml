@@ -23,10 +23,10 @@ collections:
         fields:
           - { label: "Link", name: "link", widget: "string" }
 
-  - name: "blog"
-    label: "Blog"
-    label_singular: "Blog Post"
-    folder: "content/blog"
+  - name: "news"
+    label: "News"
+    label_singular: "News Post"
+    folder: "content/news"
     create: true
     slug: "{{slug}}_{{year}}-{{month}}-{{day}}"
     fields:
