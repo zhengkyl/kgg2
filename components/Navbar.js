@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
     "&:hover": {
-      textDecoration: `underline`,
+      color: `${theme.palette.text.secondary}`
     },
     "&:visited": {
       color: "inherit",
@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   activeLink: {
-    borderBottom: '2px solid blue',
+    borderBottom: `2px solid ${theme.palette.primary.main}`,
 
   },
   toolbar: {
