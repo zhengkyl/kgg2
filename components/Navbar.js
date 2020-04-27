@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   logo: {
+    cursor:'pointer',
     height: 20,
     width: `auto`,
     position: `absolute`,
@@ -66,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     fontSize:'1.25rem',
-    fontWeight:300,
+    fontWeight:400,
     color: `${theme.palette.text.primary}`,
     height: "100%",
     textDecoration: `none`,
@@ -139,8 +140,8 @@ export default function Navbar(props) {
   const mobileList = () => (
     <List className={classes.list}>
       {pages.map((page) => (
-        <Link href={page.path}>
-          <ListItem button key={page.title} className={classes.listItem}>
+        <Link href={page.path} key={page.title}>
+          <ListItem button className={classes.listItem} onClick={toggleDrawer(false)}>
             <Typography variant="h5" component="a">
               {page.title}
             </Typography>
@@ -161,7 +162,7 @@ export default function Navbar(props) {
   const desktopList = () => (
     <List className={classes.list}>
       {pages.map((page) => (
-        <ListItem key={page.title} className={classes.listItem}>
+        <ListItem key={page.title} className={classes.listItem} onClick={toggleDrawer(false)}>
           <Link href={page.path}>
             <a title={page.title} className={clsx(classes.link, router.pathname === page.path && classes.activeLink)}>
               {page.title}
@@ -191,7 +192,9 @@ export default function Navbar(props) {
               </IconButton>
             </Hidden>
             <Hidden xsDown>{desktopList()}</Hidden>
-            <KggLogo className={classes.logo} />
+            <Link href="/">
+              <KggLogo className={classes.logo}/>
+            </Link>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
