@@ -52,4 +52,15 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Slideshow"
+        name: "slideshow"
+        file: "content/slideshow.md"
+        fields:
+          - label: "Slides"
+            name: "slides"
+            widget: "list"
+            fields:
+              - { label: "Slide Text", name: "text", widget: "string" }
+              - { label: "Slide Image", name: "image", widget: "image" }
+
 

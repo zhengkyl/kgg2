@@ -7,6 +7,7 @@ import { lightTheme, darkTheme } from "../src/theme";
 // import useDarkMode from "../src/useDarkMode";
 import MainLayout from "../components/MainLayout";
 import { useEffect } from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 /*
 https://github.com/mui-org/material-ui/tree/master/examples/nextjs
