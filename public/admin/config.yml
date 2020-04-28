@@ -55,8 +55,8 @@ collections:
   - name: "slideshow"
     label: "Slideshow"
     path: '{{slug}}/index'
-    media_folder: ''
-    public_folder: ''
+    media_folder: 'public/img/slideshow'
+    public_folder: 'slideshow'
     files: 
       - label: "Home Slideshow"
         name: "home_slideshow"
@@ -76,8 +76,8 @@ collections:
     folder: content/posts
     create: true
     path: '{{slug}}/index'
-    media_folder: ''
-    public_folder: ''
+    media_folder: '{{media_folder}}/test'
+    public_folder: '{{public_folder}}/test'
     fields:
       - label: Title
         name: title
