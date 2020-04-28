@@ -1,14 +1,6 @@
 ---
-title: Awesome kitties
-date: 2019-03-17T19:31:20.591Z
-cats:
-  - description: 'Maru is a Scottish Fold from Japan, and he loves boxes.'
-    name: Maru (まる)
-  - description: Lil Bub is an American celebrity cat known for her unique appearance.
-    name: Lil Bub
-  - description: 'Grumpy cat is an American celebrity cat known for her grumpy appearance.'
-    name: Grumpy cat (Tardar Sauce)
+title: About
 ---
-Welcome to my awesome page about cats of the internet.
+We're an epic community of gamers dedicated to advocating for the world's most repressed minority group.
 
-This page is built with NextJS, and content is managed in Netlify CMS
+Kappa Gamma Gamma is officially an unofficial fraternity/sorority/cooperative open and welcoming to all interested individuals. Learn about our Unspoken Rule and gaming opportunities at the 3rd floor of the Honors College North building.
