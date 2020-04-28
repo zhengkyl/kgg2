@@ -54,13 +54,13 @@ collections:
           - { label: "Body", name: "body", widget: "markdown" }
   - name: "slideshow"
     label: "Slideshow"
-    path: '{{slug}}/index'
+    path: '{{slug}}'
     media_folder: ''
     public_folder: ''
     files: 
       - label: "Home Slideshow"
         name: "home_slideshow"
-        file: "content/home_slideshow.md"
+        file: "content/slideshow/home_slideshow.md"
         fields:
           - label: "Slides"
             label_singular: "slide"
