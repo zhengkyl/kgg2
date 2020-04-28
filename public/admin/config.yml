@@ -55,7 +55,7 @@ collections:
   - name: "slideshow"
     label: "Slideshow"
     folder: content/slideshow
-    path: '{{slug/index}}'
+    path: '{{slug}}/index'
     media_folder: ''
     public_folder: ''
     files: 
