@@ -54,7 +54,6 @@ collections:
           - { label: "Body", name: "body", widget: "markdown" }
   - name: "slideshow"
     label: "Slideshow"
-    folder: content/slideshow
     path: '{{slug}}/index'
     media_folder: ''
     public_folder: ''
