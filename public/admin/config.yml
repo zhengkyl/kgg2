@@ -60,7 +60,7 @@ collections:
     files: 
       - label: "Home Slideshow"
         name: "home_slideshow"
-        file: "content/slideshow.md"
+        file: "content/home_slideshow.md"
         fields:
           - label: "Slides"
             label_singular: "slide"
