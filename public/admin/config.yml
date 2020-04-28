@@ -54,8 +54,8 @@ collections:
           - { label: "Body", name: "body", widget: "markdown" }
       - label: "Slideshow"
         name: "slideshow"
-        media_folder: "{{media_folder}}/slideshow"
-        public_folder: "{{public_folder}}/slideshow"
+        media_folder: ''
+        public_folder: ''
         file: "content/slideshow.md"
         fields:
           - label: "Slides"
