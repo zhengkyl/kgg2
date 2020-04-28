@@ -54,9 +54,8 @@ collections:
           - { label: "Body", name: "body", widget: "markdown" }
   - name: "slideshow"
     label: "Slideshow"
-    path: '{{slug}}/index'
-    media_folder: 'public/img/slideshow'
-    public_folder: 'slideshow'
+    media_folder: '{{media_folder}}/slideshow'
+    public_folder: '{{public_folder}}/slideshow'
     files: 
       - label: "Home Slideshow"
         name: "home_slideshow"
@@ -69,21 +68,4 @@ collections:
             fields:
               - { label: "Slide Text", name: "text", widget: "string" }
               - { label: "Slide Image", name: "image", widget: "image" }
-
-  - name: posts
-    label: Posts
-    label_singular: 'Post'
-    folder: content/posts
-    create: true
-    path: '{{slug}}/index'
-    media_folder: '{{media_folder}}/test'
-    public_folder: '{{public_folder}}/test'
-    fields:
-      - label: Title
-        name: title
-        widget: string
-      - label: 'Cover Image'
-        name: 'image'
-        widget: 'image'
-
 
