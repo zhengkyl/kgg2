@@ -1,6 +1,6 @@
 ---
 slides:
-  - image: /img/1.png
+  - image: /img/slideshow/1.png
     text: test
 ---
 
