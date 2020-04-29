@@ -54,25 +54,21 @@ collections:
           - { label: "Body", name: "body", widget: "markdown" }
   - name: "slideshow"
     label: "Slideshow"
-    path: 'content/home_slideshow.md'
-    media_folder: ''
-    files: 
-      - label: "Home Slideshow"
-        name: "home_slideshow"
-        file: "content/slideshow/home_slideshow.md"
+    path: 'content/slideshow'
+    media_folder: '../../public/img/slideshow'
+    fields:
+      - label: "Slides"
+        label_singular: "slide"
+        name: "slides"
+        widget: "list"
         fields:
-          - label: "Slides"
-            label_singular: "slide"
-            name: "slides"
-            widget: "list"
-            fields:
-              - { label: "Slide Text", name: "text", widget: "string" }
-              - { label: "Slide Image", name: "image", widget: "image" }
+          - { label: "Slide Text", name: "text", widget: "string" }
+          - { label: "Slide Image", name: "image", widget: "image" }
   - name: posts
     label: Posts
     label_singular: 'Post'
-    folder: content
-    media_folder: '../public/img/slideshow'
+    folder: content/posts
+    media_folder: '../../public/img/slideshow'
     create: true
     fields:
       - label: Title
