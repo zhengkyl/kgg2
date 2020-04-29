@@ -47,7 +47,11 @@ class MyDocument extends Document {
   }
 }
 
-// https://developerhandbook.com/react/how-to-set-up-nextjs-material-ui/
+/*
+https://github.com/mui-org/material-ui/tree/master/examples/nextjs
+I'm gonna be honest, I don't really understand this
+EVERYTHING BELOW IS COPIED
+*/
 
 MyDocument.getInitialProps = async (ctx) => {
   // Render app and page and get the context of the page with collected side effects.

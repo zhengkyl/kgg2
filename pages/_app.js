@@ -23,6 +23,7 @@ export default function MyApp(props) {
     setDarkMode(!darkMode);
   }
 
+  // From example vvv
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -30,6 +31,8 @@ export default function MyApp(props) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
+  // From example ^^^
+
   return (
     <React.Fragment>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>

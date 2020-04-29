@@ -63,6 +63,7 @@ collections:
       - widget: "list"
         name: "slides"
         label: "Slides"
+        label_singular: "Slide"
         fields:
           - { label: "Slide Text", name: "text", widget: "string" }
           - { label: "Slide Image", name: "image", widget: "image" }
