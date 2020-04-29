@@ -57,23 +57,10 @@ collections:
     folder: 'content/slideshow'
     media_folder: '../../public/img/slideshow'
     fields:
-      - label: "Slides"
-        label_singular: "slide"
-        name: "slides"
-        widget: "list"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - widget: "list"
         fields:
           - { label: "Slide Text", name: "text", widget: "string" }
           - { label: "Slide Image", name: "image", widget: "image" }
-  - name: posts
-    label: Posts
-    label_singular: 'Post'
-    folder: content/posts
-    media_folder: '../../public/img/slideshow'
-    create: true
-    fields:
-      - label: Title
-        name: title
-        widget: string
-      - label: 'Cover Image'
-        name: 'image'
-        widget: 'image'
