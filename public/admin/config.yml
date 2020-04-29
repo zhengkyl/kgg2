@@ -54,9 +54,8 @@ collections:
           - { label: "Body", name: "body", widget: "markdown" }
   - name: "slideshow"
     label: "Slideshow"
-    path: 'content/slideshow/{{slug}}'
+    path: 'content/home_slideshow.md'
     media_folder: ''
-    public_folder: ''
     files: 
       - label: "Home Slideshow"
         name: "home_slideshow"
@@ -72,10 +71,8 @@ collections:
   - name: posts
     label: Posts
     label_singular: 'Post'
-    folder: content/posts
-    path: '{{slug}}/index'
-    media_folder: '{{media_folder}}/slideshow'
-    public_folder: '{{public_folder}}/slideshow'
+    folder: content
+    media_folder: '../public/img/slideshow'
     create: true
     fields:
       - label: Title
