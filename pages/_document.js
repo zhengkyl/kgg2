@@ -22,6 +22,18 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap"
             rel="stylesheet"
           />
+          {/* 
+              This removes the unexplainable padding on slideshow control dots.
+              It doesn't come from anywhere, it just exists. Children of the
+              Carousel are rendered as slides so a global jsx was needed.
+            */}
+          <style jsx global>
+            {`
+              ul {
+                padding: 0;
+              }
+            `}
+          </style>
         </Head>
         <body>
           <Main />

@@ -24,6 +24,7 @@ import clsx from 'clsx'
 const useStyles = makeStyles((theme) => ({
   appBar: {
     zIndex: 1400,
+    backgroundColor: theme.palette.secondary.main,
   },
   drawer: {},
   list: {
@@ -75,12 +76,6 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(2),
     "&:hover": {
       color: `${theme.palette.text.secondary}`
-    },
-    "&:visited": {
-      color: "inherit",
-    },
-    "&:active": {
-      color: "inherit",
     },
   },
   activeLink: {
@@ -182,7 +177,7 @@ export default function Navbar(props) {
         <AppBar
           elevation={1}
           position="fixed"
-          color="default"
+          // color="secondary"
           className={classes.appBar}
         >
           <Toolbar className={classes.toolbar}>

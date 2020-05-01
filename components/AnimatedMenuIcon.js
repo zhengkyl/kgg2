@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   bar: {
     width: 25,
     height: 3,
-    backgroundColor: `#333`,
+    backgroundColor: theme.palette.text.primary,
     marginTop: 4,
     marginBottom: 4,
     transition: `0.225s`,
