@@ -18,25 +18,10 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          <style jsx global>
-            {`
-              html,
-              body {
-                height: 100%;
-                width: 100%;
-              }
-              *,
-              *:after,
-              *:before {
-                box-sizing: border-box;
-              }
-              body {
-                font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-                font-size: 1rem;
-                margin: 0;
-              }
-            `}
-          </style>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />
