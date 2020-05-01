@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Container } from "@material-ui/core";
 import { Carousel } from "react-responsive-carousel";
-
+import { Button } from "@material-ui/core";
 import { attributes, react as HomeContent } from "../content/home.md";
-
+import homeSlideshow from "../content/slideshow/home_slideshow.md";
 const PostLink = (props) => (
   <Link href="/blog/[id]" as={`/blog/${props.id}`}>
     <a>{props.id}</a>
@@ -24,7 +24,18 @@ const useStyles = makeStyles((theme) => ({
     top: "40%",
     transform: "translate(-50%,-50%)",
     zIndex: "10",
-    fontWeight: "700",
+  },
+  overlay2: {
+    color: "#FFF",
+    position: "absolute",
+    left: "50%",
+    top: "40%",
+    transform: "translate(-50%,-50%)",
+    zIndex: "10",
+  },
+  bold: {
+    fontWeight: "600",
+    marginBottom: theme.spacing(2),
   },
   slide: {
     height: "80vh",
@@ -32,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
   slideImage: {
     objectFit: "cover",
     height: "100%",
+    filter: "brightness(85%)",
   },
   slideshow: {},
 }));
@@ -50,6 +62,36 @@ export default function Index() {
 
   const classes = useStyles();
 
+  const createSlides = () =>
+    homeSlideshow.attributes.slides.map((slide) => (
+      <div className={classes.slide}>
+        <div className={classes.overlay}>
+          <Typography variant="h1" component="p" className={classes.bold}>
+            {slide.text}
+          </Typography>
+          <span>
+            <Typography variant="subtitle1" component="p">
+              {slide.subtext}
+            </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              disableElevation
+              href={slide.buttonLink}
+              target="_blank"
+            >
+              {slide.buttonText}
+            </Button>
+          </span>
+        </div>
+
+        <img
+          src={slide.image.split("../../public")[1]}
+          className={classes.slideImage}
+        ></img>
+      </div>
+    ));
+
   return (
     <>
       <Head>
@@ -57,47 +99,13 @@ export default function Index() {
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       </Head>
       <Carousel
-        showThumbs={false} showStatus={false} 
+        showThumbs={false}
+        showStatus={false}
         // renderIndicator={()=>false}
         infiniteLoop
         className={classes.slideshow}
       >
-        <div className={classes.slide}>
-          <Typography variant="h1" component="p" className={classes.overlay}>
-            Fraternity for gamers
-          </Typography>
-          <img
-            src="/img/slideshow/kgg_window.jpg"
-            className={classes.slideImage}
-          ></img>
-        </div>
-        <div className={classes.slide}>
-          <Typography variant="h1" component="p" className={classes.overlay}>
-            epic gaymer moment
-          </Typography>
-          <img
-            src="/img/slideshow/ricardo.gif"
-            className={classes.slideImage}
-          ></img>
-        </div>
-        <div className={classes.slide}>
-          <Typography variant="h1" component="p" className={classes.overlay}>
-            Where gamers come to play
-          </Typography>
-          <img
-            src="/img/slideshow/joseph_drink.jpg"
-            className={classes.slideImage}
-          ></img>
-        </div>
-        <div className={classes.slide}>
-          <Typography variant="h1" component="p" className={classes.overlay}>
-            Registered real estate brokers
-          </Typography>
-          <img
-            src="/img/slideshow/pranav_snap.jpg"
-            className={classes.slideImage}
-          ></img>
-        </div>
+        {createSlides()}
       </Carousel>
       <Container maxWidth="sm" className={classes.root}>
         <Typography variant="body1">

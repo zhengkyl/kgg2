@@ -65,5 +65,8 @@ collections:
         label: "Slides"
         label_singular: "Slide"
         fields:
-          - { label: "Slide Text", name: "text", widget: "string" }
           - { label: "Slide Image", name: "image", widget: "image" }
+          - { label: "Slide Text", name: "text", widget: "string" }
+          - { label: "Slide Subtext", name: "subtext", widget: "string", default: "Interested in KGG?" }
+          - { label: "Button Text", name: "buttonText", widget: "string", default: "GET UPDATES" }
+          - { label: "Button Link", name: "buttonLink", widget: "string", default: ""}
