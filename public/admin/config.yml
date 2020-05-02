@@ -30,7 +30,7 @@ collections:
     create: true
     slug: "{{slug}}_{{year}}-{{month}}-{{day}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Title", name: "title", widget: "string", comment: "Try for less than 10 words" }
       - {
           label: "Author",
           name: "author",
@@ -42,6 +42,8 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Featured Image", name: "image", widget: "image" }
       - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Category", name: "category", widget: "string", comment: "News, blog, gaming, etc." }
+      - { label: "Blurb", name: "blurb", widget: "string", comment: "Short < 20 word blurb displayed on article card" }
 
   - name: "pages"
     label: "Pages"
@@ -70,3 +72,20 @@ collections:
           - { label: "Slide Subtext", name: "subtext", widget: "string", default: "Interested in KGG?" }
           - { label: "Button Text", name: "buttonText", widget: "string", default: "GET UPDATES" }
           - { label: "Button Link", name: "buttonLink", widget: "string", default: ""}
+  
+  - name: "site_settings"
+    label: "Site Settings"
+    files:
+      - label: "Settings"
+        name: "settings"
+        file: "content/settings.md"
+        fields: 
+          - { label: "Title", name: "title", widget: "string", comment: "Try for less than 10 words" }
+          - {
+              label: "Frontpage Post",
+              name: "frontpage_post",
+              widget: "relation",
+              collection: "news",
+              searchFields: ["title"],
+              valueField: "date"
+            }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Container, IconButton } from "@material-ui/core";
 import { Carousel } from "react-responsive-carousel";
@@ -14,17 +14,9 @@ import homeSlideshow from "../content/slideshow/home_slideshow.md";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: `200vh`,
+    // height: `200vh`,
   },
   overlay: {
-    color: "#FFF",
-    position: "absolute",
-    left: "50%",
-    top: "40%",
-    transform: "translate(-50%,-50%)",
-    zIndex: "10",
-  },
-  overlay2: {
     color: "#FFF",
     position: "absolute",
     left: "50%",
@@ -61,6 +53,26 @@ const useStyles = makeStyles((theme) => ({
   left: {
     left: theme.spacing(1),
   },
+  about: {
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'center',
+    [theme.breakpoints.up("md")]: {
+      flexDirection:'row',
+      padding: theme.spacing(2),
+    },
+  },
+  content: {
+    flex:1,
+  },
+  image: {
+    width:'100%',
+    height:'auto',
+    maxWidth:"500px",
+    [theme.breakpoints.up("md")]: {
+      marginLeft:theme.spacing(3)
+    },
+  }
 }));
 
 export default function Index() {
@@ -74,6 +86,7 @@ export default function Index() {
       );
     }
   });
+  const [autoPlay, setAutoPlay] = useState(false)
 
   const classes = useStyles();
 
@@ -94,6 +107,10 @@ export default function Index() {
               disableElevation
               href={slide.buttonLink}
               target="_blank"
+              onMouseEnter={()=>setAutoPlay(true)}
+              onMouseLeave={()=>setAutoPlay(false)}
+              // onMouseEnter={()=>console.log("1")}
+              // onMouseLeave={()=>console.log("2")}
             >
               {slide.buttonText}
             </Button>
@@ -114,11 +131,12 @@ export default function Index() {
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       </Head>
       <Carousel
+        autoPlay={true}
         showThumbs={false}
         showStatus={false}
         infiniteLoop
         autoPlay={true}
-        interval={4000}
+        interval={3000}
         renderArrowPrev={(onClickHandler, hasPrev, label) =>
           hasPrev && (
             <IconButton
@@ -144,10 +162,15 @@ export default function Index() {
       >
         {createSlides()}
       </Carousel>
-      <Container maxWidth="sm" className={classes.root}>
-        <Typography variant="body1" component="div">
-          <HomeContent />
-        </Typography>
+      <Container maxWidth="md" className={classes.root}>
+        <div className={classes.about}>
+          <Typography variant="body1" component="div" className={classes.content}>
+            <HomeContent />
+          </Typography>
+          <div className={classes.content}>
+            <img src="/img/kgg_group.jpg" className={classes.image}></img>
+          </div>
+        </div>
       </Container>
     </>
   );
