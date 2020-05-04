@@ -1,7 +1,7 @@
 ---
-title: This is the new KGG website—whatdya think?
+title: This is the new KGG website—whatdya think?2
 author: Kyle Zheng
-date: 2019-03-17T19:31:20.591Z
+date: 2019-03-18T19:31:20.591Z
 image: img/kyle_pick.gif
 category: News
 blurb: >-

@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ArticleList from "../../components/ArticleList";
+import settings from "../../content/settings.md"
 
 // import fs from 'fs';
 
@@ -67,13 +68,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function News(props) {
   const classes = useStyles();
+
+  let frontPost = props.articles[0];
+  if (settings.attributes.frontpage_post !== '') {
+    // I considered doing a binary search since its sorted by date, but we really need to
+    // consider the effort to result ratio. Not worth literally decreasing loop by 1 iteration.
+    for (let i = 0; i < props.articles.length; i++) {
+      if (props.articles[i].attributes.date === settings.attributes.frontpage_post) {
+        frontPost = props.articles[i];
+        break;
+      }
+    }
+  }
   return (
     <Container maxWidth="lg" className={classes.container}>
       <div className={classes.card}>
         <CardMedia image="/img/kyle_pick.gif" className={classes.cardMedia} />
         <CardContent className={classes.content}>
           <Typography variant="overline" component="span">
-            News
+            {frontPost.attributes.category}
           </Typography>
           <Typography
             gutterBottom
@@ -81,7 +94,7 @@ export default function News(props) {
             component="h2"
             className={classes.title}
           >
-            This is the new KGG website—whatdya think?
+            {frontPost.attributes.title}
           </Typography>
           <Typography
             gutterBottom
@@ -90,8 +103,7 @@ export default function News(props) {
             component="p"
             className={classes.brief}
           >
-            It's been a long time coming, but it's finally here. A website with
-            all the bells, whistles, and most importantly of all—dark mode.
+            {frontPost.attributes.blurb}
           </Typography>
           <Typography variant="button" component="span">
             READ ARTICLE
@@ -113,7 +125,10 @@ export async function getStaticProps() {
     const values = keys.map(context);
 
     const data = keys.map((key, index) => {
-      const slug = key.replace(/.*[\\\/]/, "").split(".")[0];
+      // The filenames have the date at the beginning for sorting, but at the end
+      // for aethetics in url. Therefore must be unreversed for slug for links
+      let reverseSlug = key.replace(/.*[\\\/]/, "").split(".")[0];
+      const slug = `${reverseSlug.slice(11)}_${reverseSlug.slice(0,10)}`
       const value = values[index];
       return {
         slug,
@@ -124,7 +139,7 @@ export async function getStaticProps() {
   })(require.context("../../content/news", true, /\.md$/));
   return {
     props: {
-      articles,
+      articles: articles.reverse(),
     },
   };
 }

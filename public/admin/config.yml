@@ -85,6 +85,7 @@ collections:
               name: "frontpage_post",
               widget: "relation",
               collection: "news",
+              displayFields: ["title"],
               searchFields: ["title"],
               valueField: "date",
               required: false,
