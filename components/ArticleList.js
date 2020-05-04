@@ -1,10 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Container,
   Divider,
   Hidden,
   Typography,
@@ -13,7 +9,6 @@ import {
 } from "@material-ui/core";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-// import { FixedSizeList } from 'react-window';
 const useStyles = makeStyles((theme) => ({
   listItem: {
     cursor: "pointer",
@@ -28,12 +23,9 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     objectFit: "cover",
-    width: "100%",
     maxHeight: "300px",
-    [theme.breakpoints.up("sm")]: {
-      height: "120px",
-      width: "auto",
-    },
+    height: "120px",
+    width: "auto",
   },
   overline: {
     paddingTop: theme.spacing(1),
@@ -44,6 +36,12 @@ const useStyles = makeStyles((theme) => ({
     //   color:
     width: "100%",
     marginTop: theme.spacing(2),
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+  },
+  end: {
+    width: "100%",
+    textAlign: "center",
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
   },
@@ -69,8 +67,7 @@ const getDateFromString = (stringDate) =>
 
 export default function ArticleList({ articles, numLoad }) {
   const classes = useStyles();
-  const [articleList, setArticleList] = useState([]);
-
+  const [numShown, setNumShown] = useState(0);
   const createArticleListItem = (article) => (
     <Link href={`/news/${article.slug}`} key={article.slug}>
       <ListItem divider className={classes.listItem}>
@@ -86,7 +83,6 @@ export default function ArticleList({ articles, numLoad }) {
         <Hidden smDown>
           <img
             src={`${article.attributes.image}`}
-            //   src={`img/1.png`}
             className={classes.image}
           ></img>
         </Hidden>
@@ -94,35 +90,42 @@ export default function ArticleList({ articles, numLoad }) {
     </Link>
   );
   useEffect(() => {
-    showMoreArticles()
+    showMoreArticles();
   }, []);
 
   const showMoreArticles = () => {
-    const current = articleList.length;
-    let appendList = [];
-    for (let i = 0; i < numLoad; i++) {
-      if (current + i >= articles.length) {
-        break;
-      }
-      appendList.push(createArticleListItem(articles[current+i]))
+    if (numShown + numLoad > articles.length) {
+      setNumShown(articles.length);
+    } else {
+      setNumShown(numShown + numLoad);
     }
-    setArticleList([...articleList, ...appendList])
   };
 
   return (
     <List>
       <Divider />
-      {articleList}
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.loadButton}
-        onClick={showMoreArticles}
-      >
-        {/* <Typography variant="button" > */}
-        Load more articles
-        {/* </Typography> */}
-      </Button>
+      {articles.slice(0, numShown).map(createArticleListItem)}
+      {numShown == articles.length ? (
+        <Typography
+          variant="h4"
+          component="div"
+          color="textSecondary"
+          className={classes.end}
+        >
+          (ง︡'-'︠)ง Stop scrolling. There's nothing left.
+        </Typography>
+      ) : (
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.loadButton}
+          onClick={showMoreArticles}
+        >
+          {/* <Typography variant="button" > */}
+          Load more articles
+          {/* </Typography> */}
+        </Button>
+      )}
     </List>
   );
 }
