@@ -27,7 +27,15 @@ We're also now using Material Ui for faster, more responsive, and more beautiful
 Of, course we got Netlify CMS, but the site is also hosted on Netlify. Thats not a requirement, but I wasn't sure at the time, and there's no real reason to change it now. It's important to know that Netlify pushes new builds into production based on the specified branch on Github, which is currently `master`. So if a bad build is pushed into master, the site will crash. Eventually, this should change
 to a `production` branch.
 
-## Notes
+## Weird Miscellaneous Notes
+
+#### News Post Filename vs Path
+
+For aesthitic reasons, I have news posts links in the `news/this-is-title_1969-04-20` format. I refer to this as the *normal slug*. You may notice that the actual files are stored as `news/1969-04-20_this-is-title`. I call this the *reverse slug*. I liked the first version better in the URL, but the second version is must better for storing and loading since it keeps the posts in chronological order. Therefore, whenever working with the *slugs* for news posts, make sure it is in the correct form. 
+
+To go from data last to date first, use ``${slug.slice(-10)}_${slug.slice(0,-11)}`` where slug is the normal slug.
+
+To go from data first to date last, use ``${reverseSlug.slice(11)}_${reverseSlug.slice(0,10)}``, where reverseSlug is the reverse slug.
 
 #### Netlify CMS Collection Specific Media Folders
 

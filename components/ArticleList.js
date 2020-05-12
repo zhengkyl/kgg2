@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import {
+  CardMedia,
   Button,
-  Divider,
   Hidden,
   Typography,
   List,
@@ -22,10 +22,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   image: {
-    objectFit: "cover",
-    maxHeight: "300px",
-    height: "120px",
-    width: "auto",
+    // objectFit: "cover",
+    width: "100%",
+    paddingTop: '56.25%',
+  },
+  listImage:{
+    width:'200px',
   },
   overline: {
     paddingTop: theme.spacing(1),
@@ -81,10 +83,12 @@ export default function ArticleList({ articles, numLoad }) {
           </Typography>
         </div>
         <Hidden smDown>
-          <img
-            src={`${article.attributes.image}`}
+          <div className={classes.listImage}>
+            <CardMedia
+            image={`${article.attributes.image}`}
             className={classes.image}
-          ></img>
+          ></CardMedia>
+          </div>
         </Hidden>
       </ListItem>
     </Link>
@@ -103,7 +107,6 @@ export default function ArticleList({ articles, numLoad }) {
 
   return (
     <List>
-      <Divider />
       {articles.slice(0, numShown).map(createArticleListItem)}
       {numShown == articles.length ? (
         <Typography
