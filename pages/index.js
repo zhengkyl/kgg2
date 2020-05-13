@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "10",
   },
   bold: {
-    fontWeight: "600",
+    fontWeight: "500",
     marginBottom: theme.spacing(2),
   },
   slide: {

@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import {
   CardMedia,
+  Divider,
   Button,
   Hidden,
   Typography,
@@ -78,7 +79,7 @@ export default function ArticleList({ articles, numLoad }) {
             {getDateFromString(article.attributes.date)} /{" "}
             {article.attributes.category.toUpperCase()}
           </Typography>
-          <Typography variant="h4" component="h3">
+          <Typography variant="h5" component="h3" >
             {article.attributes.title}
           </Typography>
         </div>
@@ -107,6 +108,7 @@ export default function ArticleList({ articles, numLoad }) {
 
   return (
     <List>
+      <Divider/>
       {articles.slice(0, numShown).map(createArticleListItem)}
       {numShown == articles.length ? (
         <Typography

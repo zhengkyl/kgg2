@@ -1,7 +1,7 @@
 ---
-title: normal title length test katcho hink3?
+title:  here is another tiltles
 author: Kyle Zheng
-date: 2019-03-20T19:31:20.591Z
+date: 2019-03-17T19:31:20.591Z
 image: img/kyle_pick.gif
 category: News
 blurb: >-

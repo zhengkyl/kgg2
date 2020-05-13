@@ -20,14 +20,15 @@ const useStyles = makeStyles((theme) => ({
   card: {
     display: "flex",
     flexDirection: "column",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       flexDirection: "row",
       height: "500px",
     },
   },
   cardMedia: {
-    height: 250,
-    [theme.breakpoints.up("sm")]: {
+    paddingTop:"56.25%",
+    [theme.breakpoints.up("md")]: {
+      paddingTop:0,
       flex: 2,
       height: "auto",
     },
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 0,
     borderBottom: `1px solid ${theme.palette.divider}`,
 
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       borderBottom: "none",
       margin: 0,
       padding: theme.spacing(4),
@@ -69,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   sectionHead: {
+    fontWeight:500,
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(1),
   },
@@ -78,6 +80,9 @@ const useStyles = makeStyles((theme) => ({
       borderBottom: "none",
     },
   },
+  title:{
+    fontWeight:500,
+  }
 }));
 
 export default function News(props) {
@@ -93,7 +98,7 @@ export default function News(props) {
           </Typography>
           <Typography
             gutterBottom
-            variant="h3"
+            variant="h2"
             component="h2"
             className={classes.title}
           >
@@ -132,7 +137,7 @@ export default function News(props) {
           className={classes.window}
         /> */}
 
-        <Typography variant="h4" className={classes.sectionHead}>
+        <Typography variant="h3" className={classes.sectionHead}>
           All Articles
         </Typography>
         <ArticleList articles={props.articles} numLoad={1} />

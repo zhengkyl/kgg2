@@ -7,11 +7,12 @@ import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 const useStyles = makeStyles((theme) => ({
   card: {
+    cursor:'pointer',
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    height:'320',
-    justifyContent:'space-between',
+    height: "320",
+    justifyContent: "space-between",
     alignItems: "start",
     paddingLeft: 0,
     paddingRight: 0,
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cardMedia: {
     // height: 250,
-    paddingTop: '56.25%',
+    paddingTop: "56.25%",
     width: "100%",
   },
   list: {
@@ -49,12 +50,15 @@ export default function ArticleWindow({ className, promotedArticles }) {
   const createArticleItem = (article) => (
     <Link href={`/news/${article.slug}`} key={article.slug}>
       <ListItem className={classes.card}>
-        <Typography variant="button" component="span" color="textSecondary">
-          {article.attributes.category.toUpperCase()}
-        </Typography>
-        <Typography variant="h5" component="h3">
-          {article.attributes.title}
-        </Typography>
+        <div>
+          <Typography variant="button" component="span" color="textSecondary">
+            {article.attributes.category.toUpperCase()}
+          </Typography>
+          <Typography variant="h5" component="h3">
+            {article.attributes.title}
+          </Typography>
+        </div>
+
         <CardMedia
           image={`${article.attributes.image}`}
           className={classes.cardMedia}

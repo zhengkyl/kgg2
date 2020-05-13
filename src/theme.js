@@ -9,7 +9,7 @@ export const lightTheme = responsiveFontSizes(
       // },
     },
     typography: {
-      fontFamily: ['Titillium Web', "Roboto", "Helvetica", "Arial", 'sans-serif']
+      fontFamily: ['Jost', "Helvetica", "Arial", 'sans-serif']
     }
   })
 );

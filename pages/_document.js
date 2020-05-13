@@ -14,14 +14,15 @@ class MyDocument extends Document {
             content="minimum-scale=1, initial-scale=1, width=device-width"
           />
           {/* <meta name="theme-color" content={darkTheme.palette.primary.main} /> */}
-          <link
+          {/* <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
           <link
             href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap"
             rel="stylesheet"
-          />
+          /> */}
+          <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700&display=swap" rel="stylesheet"/> 
           {/* 
               This removes the unexplainable padding on slideshow control dots.
               It doesn't come from anywhere, it just exists. Children of the
