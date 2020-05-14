@@ -30,8 +30,9 @@ class MyDocument extends Document {
             */}
           <style jsx global>
             {`
-              ul {
-                padding: 0;
+              img {
+                width: 100%;
+                height: auto;
               }
             `}
           </style>

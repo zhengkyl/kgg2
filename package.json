@@ -19,6 +19,7 @@
     "clsx": "^1.1.0",
     "frontmatter-markdown-loader": "^3.4.2",
     "glob": "^7.1.6",
+    "interweave": "^12.5.0",
     "isomorphic-unfetch": "^3.0.0",
     "netlify-cms": "^2.10.47",
     "netlify-identity-widget": "^1.5.6",

@@ -10,6 +10,8 @@ import {
 } from "@material-ui/core";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import getDate from '../src/dateParser'
+
 const useStyles = makeStyles((theme) => ({
   listItem: {
     cursor: "pointer",
@@ -50,23 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const months = [
-  "Easter Egg",
-  "JAN",
-  "FEB",
-  "MAR",
-  "APR",
-  "MAY",
-  "JUN",
-  "JUL",
-  "AUG",
-  "SEP",
-  "OCT",
-  "NOV",
-  "DEC",
-];
-const getDateFromString = (stringDate) =>
-  `${months[parseInt(stringDate.slice(5, 7))]} ${stringDate.slice(8, 10)}`;
+
 
 export default function ArticleList({ articles, numLoad }) {
   const classes = useStyles();
@@ -76,7 +62,7 @@ export default function ArticleList({ articles, numLoad }) {
       <ListItem divider className={classes.listItem}>
         <div className={classes.overline}>
           <Typography variant="h6" component="span" color="textSecondary">
-            {getDateFromString(article.attributes.date)} /{" "}
+            {getDate(article.attributes.date)} /{" "}
             {article.attributes.category.toUpperCase()}
           </Typography>
           <Typography variant="h5" component="h3" >

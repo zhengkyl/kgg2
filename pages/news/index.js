@@ -10,7 +10,7 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ArticleList from "../../components/ArticleList";
 import ArticleWindow from "../../components/ArticleWindow";
 import settings from "../../content/settings.md";
-
+import Link from 'next/link'
 // import fs from 'fs';
 
 const useStyles = makeStyles((theme) => ({
@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   card: {
+    cursor: "pointer",
     display: "flex",
     flexDirection: "column",
     [theme.breakpoints.up("md")]: {
@@ -26,10 +27,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   cardMedia: {
-    paddingTop:"56.25%",
+    paddingTop: "56.25%",
     [theme.breakpoints.up("md")]: {
-      paddingTop:0,
-      flex: 2,
+      paddingTop: 0,
+      flex: 2.1,
       height: "auto",
     },
   },
@@ -47,8 +48,12 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.up("md")]: {
       borderBottom: "none",
-      margin: 0,
-      padding: theme.spacing(4),
+      // margin: 0,
+      // padding: theme.spacing(4),
+    },
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(4),
+      marginRight: theme.spacing(4),
     },
   },
   brief: {
@@ -70,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   sectionHead: {
-    fontWeight:500,
+    fontWeight: 500,
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(1),
   },
@@ -80,9 +85,14 @@ const useStyles = makeStyles((theme) => ({
       borderBottom: "none",
     },
   },
-  title:{
-    fontWeight:500,
-  }
+  title: {
+    fontWeight: 500,
+  },
+  readMore: {
+    "&:hover": {
+      color: theme.palette.primary.main,
+    },
+  },
 }));
 
 export default function News(props) {
@@ -90,37 +100,42 @@ export default function News(props) {
 
   return (
     <Container maxWidth="lg" className={classes.container}>
-      <div className={classes.card}>
-        <CardMedia image="/img/kyle_pick.gif" className={classes.cardMedia} />
-        <CardContent className={classes.content}>
-          <Typography variant="overline" component="span">
-            {props.frontPost.attributes.category}
-          </Typography>
-          <Typography
-            gutterBottom
-            variant="h2"
-            component="h2"
-            className={classes.title}
-          >
-            {props.frontPost.attributes.title}
-          </Typography>
-          <Typography
-            gutterBottom
-            variant="body1"
-            color="textSecondary"
-            component="p"
-            className={classes.brief}
-          >
-            {props.frontPost.attributes.blurb}
-          </Typography>
-          <Typography variant="button" component="span">
-            READ ARTICLE
-            <ArrowForwardIcon fontSize="inherit" className={classes.arrow} />
-          </Typography>
-        </CardContent>
-      </div>
+      <Link href={`/news/${props.frontPost.slug}`}>
+        <div className={classes.card}>
+          <CardMedia image="/img/kyle_pick.gif" className={classes.cardMedia} />
+          <CardContent className={classes.content}>
+            <Typography variant="overline" component="span">
+              {props.frontPost.attributes.category}
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="h2"
+              component="h2"
+              className={classes.title}
+            >
+              {props.frontPost.attributes.title}
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="body1"
+              color="textSecondary"
+              component="p"
+              className={classes.brief}
+            >
+              {props.frontPost.attributes.blurb}
+            </Typography>
+            <Typography
+              variant="button"
+              component="span"
+              className={classes.readMore}
+            >
+              READ ARTICLE
+              <ArrowForwardIcon fontSize="inherit" className={classes.arrow} />
+            </Typography>
+          </CardContent>
+        </div>
+      </Link>
       <div className={classes.otherContent}>
-
         <Typography variant="h3" className={classes.sectionHead}>
           Hot Stuff
         </Typography>
@@ -165,27 +180,28 @@ export async function getStaticProps() {
     return data;
   })(require.context("../../content/news", true, /\.md$/)).reverse();
 
-  let modifiedArticles = articles.slice()
+  let modifiedArticles = articles.slice();
   let frontPost;
   if (settings.attributes.frontpage_post) {
     // I considered doing a binary search since its sorted by date, but we really need to
     // consider the effort to result ratio.
     for (let i = 0; i < modifiedArticles.length; i++) {
       if (
-        modifiedArticles[i].attributes.date === settings.attributes.frontpage_post
+        modifiedArticles[i].attributes.date ===
+        settings.attributes.frontpage_post
       ) {
-        frontPost = modifiedArticles.splice(i,1)[0];
+        frontPost = modifiedArticles.splice(i, 1)[0];
         break;
       }
     }
-  }else{
-    frontPost = modifiedArticles.splice(0,1)[0]
+  } else {
+    frontPost = modifiedArticles.splice(0, 1)[0];
   }
 
-  let hotPosts = modifiedArticles.slice(0,3)
+  let hotPosts = modifiedArticles.slice(0, 3);
 
   // More Article windows can easily added. Just need to be sliced from
-  // modifiedArticles to ensure no repeats. 
+  // modifiedArticles to ensure no repeats.
 
   return {
     props: {
