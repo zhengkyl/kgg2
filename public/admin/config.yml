@@ -70,8 +70,13 @@ collections:
           - { label: "Slide Image", name: "image", widget: "image" }
           - { label: "Slide Text", name: "text", widget: "string" }
           - { label: "Slide Subtext", name: "subtext", widget: "string", default: "Interested in KGG?" }
-          - { label: "Button Text", name: "buttonText", widget: "string", default: "GET UPDATES" }
-          - { label: "Button Link", name: "buttonLink", widget: "string", default: ""}
+          - label: "Buttons"
+            label_singular: "Button"
+            name: "buttons"
+            widget: "list"
+            fields: 
+              - { label: "Button Text", name: "buttonText", widget: "string", default: "GET UPDATES" }
+              - { label: "Button Link", name: "buttonLink", widget: "string", default: ""}
   
   - name: "site_settings"
     label: "Site Settings"

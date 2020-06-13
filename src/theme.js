@@ -10,7 +10,7 @@ export const lightTheme = responsiveFontSizes(
     },
     typography: {
       fontFamily: ['Jost', "Helvetica", "Arial", 'sans-serif']
-    }
+    },
   })
 );
 

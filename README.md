@@ -37,10 +37,16 @@ To go from data last to date first, use ``${slug.slice(-10)}_${slug.slice(0,-11)
 
 To go from data first to date last, use ``${reverseSlug.slice(11)}_${reverseSlug.slice(0,10)}``, where reverseSlug is the reverse slug.
 
+#### News Article Pages Styling
+
+The body of articles aren't styled correctly. The markdown is rendered directly as html, so no responsive fonts or custom styling. I attemped to do something using the *interweave* package, but could not get it to work. It might be because it requires a polyfill to work for server side rendering, which is literally in the documentation, but I'm too lazy and it looks fine rn tbh.
+
+This is also why I added global img styling, because I couldn't styling anything from the markdown.
+
 #### Netlify CMS Collection Specific Media Folders
 
 Setting this up for slideshows was a pain, and I couldn't really do what I want. All I wanted to have media saved in `public/img/slideshow` for one specific slideshow file. I couldn't make it work with file collections (you might notice 30 "test" commits), so now there is a lonely "slideshow" folder collection that will only have one file. This also requires the **_BETA_** version of the CMS, which I wish I figured out earlier.
 
 #### Animated Menu Icon
 
-Yeah, I know it's cool, I made it myself. It's 3 divs with hardcoded animations, so yeah. Perhaps, it would be better to use pseudo elements, but that gets funky when working with CSS in js. PS, W3 schools has an incorrect tutorial for this. In case you're wondering, the css transform property is executed right to left and relative to the objects original origin.
+Yeah, I know it's cool, I made it myself. It's 3 divs with hardcoded animations, so yeah. Perhaps, it would be better to use pseudo elements, but that gets funky. PS, W3 schools has an incorrect tutorial for this. In case you're wondering, the css transform property is executed right to left and relative to the objects original origin.

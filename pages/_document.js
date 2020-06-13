@@ -36,6 +36,7 @@ class MyDocument extends Document {
               }
             `}
           </style>
+          <link rel="shortcut icon" href="/favicon.ico" />
         </Head>
         <body>
           <Main />

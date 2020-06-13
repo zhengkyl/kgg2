@@ -13,23 +13,33 @@ import { attributes, react as HomeContent } from "../content/home.md";
 import homeSlideshow from "../content/slideshow/home_slideshow.md";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    // height: `200vh`,
-  },
   overlay: {
     color: "#FFF",
     position: "absolute",
     left: "50%",
-    top: "40%",
+    top: "55%",
     transform: "translate(-50%,-50%)",
     zIndex: "10",
+    // width:'80%',
   },
-  bold: {
-    fontWeight: "500",
+  slideTitle: {
+    fontWeight: "600",
+    textAlign:'left',
     marginBottom: theme.spacing(2),
+    textShadow: '0 0 8px rgba(0, 0, 0, 0.7)',
+    lineHeight:1,
   },
   slide: {
-    height: "80vh",
+    height: `100vh`,
+    marginTop: -56,
+    paddingTop: 56,
+    // [`${theme.breakpoints.up("xs")} and (orientation: landscape)`]: {
+      // TODO landscape layout
+    // },
+    [theme.breakpoints.up("sm")]: {
+      marginTop: -64,
+      paddingTop: 64,
+    },
   },
   slideImage: {
     objectFit: "cover",
@@ -38,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   navArrow: {
     display: "none",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       display: "unset",
       position: "absolute",
       top: "50%",
@@ -54,25 +64,33 @@ const useStyles = makeStyles((theme) => ({
     left: theme.spacing(1),
   },
   about: {
-    display:'flex',
-    flexDirection:'column',
-    alignItems:'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     [theme.breakpoints.up("md")]: {
-      flexDirection:'row',
+      flexDirection: "row",
       padding: theme.spacing(2),
     },
   },
   content: {
-    flex:1,
+    flex: 1,
+  },
+  buttonSpan:{
+    width:'100%',
+    textAlign:'left',
+  },
+  button:{
+    margin: `${theme.spacing(1)}px`,
+    // marginLeft: theme.spacing(2),
   },
   image: {
-    width:'100%',
-    height:'auto',
-    maxWidth:"500px",
+    width: "100%",
+    height: "auto",
+    maxWidth: "500px",
     [theme.breakpoints.up("md")]: {
-      marginLeft:theme.spacing(3)
+      marginLeft: theme.spacing(3),
     },
-  }
+  },
 }));
 
 export default function Index() {
@@ -86,36 +104,34 @@ export default function Index() {
       );
     }
   });
-  const [autoPlay, setAutoPlay] = useState(false)
+  // const [autoPlay, setAutoPlay] = useState(false);
 
   const classes = useStyles();
 
   const createSlides = () =>
     homeSlideshow.attributes.slides.map((slide) => (
       <div className={classes.slide} key={slide.text}>
-        <div className={classes.overlay}>
-          <Typography variant="h1" component="p" className={classes.bold}>
+        <Container maxWidth='md' className={classes.overlay}>
+          <Typography variant="h1" component="div" className={classes.slideTitle}>
             {slide.text}
           </Typography>
-          <span>
-            <Typography variant="subtitle1" component="p">
-              {slide.subtext}
-            </Typography>
-            <Button
+          <div className={classes.buttonSpan}>
+            {slide.buttons.map((button, index)=>(
+              <Button
               variant="contained"
-              color="secondary"
+              // TODO update when color scheme decided
+              color={index % 2 == 0 ?"secondary":"primary"}
               disableElevation
-              href={slide.buttonLink}
+              href={button.buttonLink}
               target="_blank"
-              onMouseEnter={()=>setAutoPlay(true)}
-              onMouseLeave={()=>setAutoPlay(false)}
-              // onMouseEnter={()=>console.log("1")}
-              // onMouseLeave={()=>console.log("2")}
+              className={classes.button}
             >
-              {slide.buttonText}
+              {button.buttonText}
             </Button>
-          </span>
-        </div>
+            ))}
+            
+          </div>
+        </Container>
 
         <img
           src={slide.image.split("../../public")[1]}
@@ -137,6 +153,7 @@ export default function Index() {
         infiniteLoop
         autoPlay={true}
         interval={3000}
+        className={classes.car}
         renderArrowPrev={(onClickHandler, hasPrev, label) =>
           hasPrev && (
             <IconButton
@@ -164,7 +181,11 @@ export default function Index() {
       </Carousel>
       <Container maxWidth="md" className={classes.root}>
         <div className={classes.about}>
-          <Typography variant="body1" component="div" className={classes.content}>
+          <Typography
+            variant="body1"
+            component="div"
+            className={classes.content}
+          >
             <HomeContent />
           </Typography>
           <div className={classes.content}>
