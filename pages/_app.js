@@ -39,8 +39,7 @@ export default function MyApp(props) {
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         {/* CssBaseline changes the background color in addition to other stuff */}
         <CssBaseline />
-        <Head>
-
+        <MainLayout toggleTheme={toggleTheme} darkMode={darkMode}>
         <style jsx global>
           {`
             img {
@@ -49,8 +48,6 @@ export default function MyApp(props) {
             }
           `}
         </style>
-      </Head>
-        <MainLayout toggleTheme={toggleTheme} darkMode={darkMode}>
           <Component {...pageProps} />
         </MainLayout>
       </ThemeProvider>
