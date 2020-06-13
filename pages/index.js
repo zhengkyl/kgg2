@@ -2,10 +2,10 @@ import Link from "next/link";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Typography, Container, IconButton } from "@material-ui/core";
+import { Typography, Container, IconButton, Button } from "@material-ui/core";
 import { Carousel } from "react-responsive-carousel";
-import { Button } from "@material-ui/core";
 import clsx from "clsx";
+
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
