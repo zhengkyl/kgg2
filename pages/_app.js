@@ -17,11 +17,11 @@ I'm gonna be honest, I don't really understand this
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
-  
-  const [darkMode, setDarkMode] = useState(false)
+
+  const [darkMode, setDarkMode] = useState(false);
   const toggleTheme = () => {
     setDarkMode(!darkMode);
-  }
+  };
 
   // From example vvv
   useEffect(() => {
@@ -35,6 +35,17 @@ export default function MyApp(props) {
 
   return (
     <React.Fragment>
+      <Head>
+
+        <style jsx global>
+          {`
+            img {
+              width: 100%;
+              height: auto;
+            }
+          `}
+        </style>
+      </Head>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         {/* CssBaseline changes the background color in addition to other stuff */}
         <CssBaseline />

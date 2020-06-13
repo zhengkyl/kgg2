@@ -24,17 +24,17 @@ const useStyles = makeStyles((theme) => ({
   },
   slideTitle: {
     fontWeight: "600",
-    textAlign:'left',
+    textAlign: "left",
     marginBottom: theme.spacing(2),
-    textShadow: '0 0 8px rgba(0, 0, 0, 0.7)',
-    lineHeight:1,
+    textShadow: "0 0 8px rgba(0, 0, 0, 0.7)",
+    lineHeight: 1,
   },
   slide: {
     height: `100vh`,
     marginTop: -56,
     paddingTop: 56,
     // [`${theme.breakpoints.up("xs")} and (orientation: landscape)`]: {
-      // TODO landscape layout
+    // TODO landscape layout
     // },
     [theme.breakpoints.up("sm")]: {
       marginTop: -64,
@@ -75,11 +75,11 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flex: 1,
   },
-  buttonSpan:{
-    width:'100%',
-    textAlign:'left',
+  buttonSpan: {
+    width: "100%",
+    textAlign: "left",
   },
-  button:{
+  button: {
     margin: `${theme.spacing(1)}px`,
     // marginLeft: theme.spacing(2),
   },
@@ -111,25 +111,28 @@ export default function Index() {
   const createSlides = () =>
     homeSlideshow.attributes.slides.map((slide) => (
       <div className={classes.slide} key={slide.text}>
-        <Container maxWidth='md' className={classes.overlay}>
-          <Typography variant="h1" component="div" className={classes.slideTitle}>
+        <Container maxWidth="md" className={classes.overlay}>
+          <Typography
+            variant="h1"
+            component="div"
+            className={classes.slideTitle}
+          >
             {slide.text}
           </Typography>
           <div className={classes.buttonSpan}>
-            {slide.buttons.map((button, index)=>(
+            {slide.buttons.map((button, index) => (
               <Button
-              variant="contained"
-              // TODO update when color scheme decided
-              color={index % 2 == 0 ?"secondary":"primary"}
-              disableElevation
-              href={button.buttonLink}
-              target="_blank"
-              className={classes.button}
-            >
-              {button.buttonText}
-            </Button>
+                variant="contained"
+                // TODO update when color scheme decided
+                color={index % 2 == 0 ? "secondary" : "primary"}
+                disableElevation
+                href={button.buttonLink}
+                target="_blank"
+                className={classes.button}
+              >
+                {button.buttonText}
+              </Button>
             ))}
-            
           </div>
         </Container>
 
@@ -142,10 +145,23 @@ export default function Index() {
 
   return (
     <>
+      {/* 
+        This removes the unexplainable padding on slideshow control dots.
+        It doesn't come from anywhere, it just exists. Children of the
+        Carousel are rendered as slides so a global jsx was needed.
+      */}
+      <style jsx global>
+        {`
+          ul {
+            padding-left: 0;
+          }
+        `}
+      </style>
       <Head>
         <title>Home | KGG</title>
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       </Head>
+
       <Carousel
         autoPlay={true}
         showThumbs={false}
