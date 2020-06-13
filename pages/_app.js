@@ -35,7 +35,11 @@ export default function MyApp(props) {
 
   return (
     <React.Fragment>
-      <Head>
+      
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+        {/* CssBaseline changes the background color in addition to other stuff */}
+        <CssBaseline />
+        <Head>
 
         <style jsx global>
           {`
@@ -46,9 +50,6 @@ export default function MyApp(props) {
           `}
         </style>
       </Head>
-      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-        {/* CssBaseline changes the background color in addition to other stuff */}
-        <CssBaseline />
         <MainLayout toggleTheme={toggleTheme} darkMode={darkMode}>
           <Component {...pageProps} />
         </MainLayout>
