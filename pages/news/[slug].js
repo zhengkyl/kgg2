@@ -82,7 +82,7 @@ export default function Article(props) {
           {props.author}
         </Typography>
         <Typography variant="subtitle2" color="textSecondary">
-          {`Published ${getDate(props.date)}`}
+          {getDate(props.date)}
         </Typography>
         </div>
       </Container>

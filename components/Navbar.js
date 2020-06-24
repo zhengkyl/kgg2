@@ -84,6 +84,7 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     flexDirection: "row-reverse",
     alignItems: 'stretch',
+    maxWidth:theme.breakpoints.width("md"),
   },
   icon: {
     paddingLeft: theme.spacing(1),
@@ -101,7 +102,6 @@ const useStyles = makeStyles((theme) => ({
 const pages = [
   { title: 'About', path: '/'},
   { title: "News", path: "/news" },
-  { title: "Social", path: "/social" },
   { title: "Store", path: "/store" },
 ];
 

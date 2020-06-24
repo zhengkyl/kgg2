@@ -1,11 +1,12 @@
-# KGG Website 2.0
+# Archived KGG Website Mockup
+https://kgg-web.netlify.app/ 
 
-This is the new KGG website.
+# Why this is Archived
+I ultimately decided that this was not the direction to go for a KGG website. I spent a lot of time and made a lot of mistakes. There are a lot of cool things that I got to work on this project. I am especially proud with how the Netlify CMS is integrated with the news section to automatically update the featured posts. The animated menu button is very nice.
 
-## Major Features
+This entire project just kind of grew out of scope from what it should have been, a **simple**, **static**, and **aesthetically pleasing** website made as a meme. Nextjs was the wrong choice. The level of integration with the CMS I strived for was wasted effort. No one was going to make posts. Adding a toggleable dark mode just made it uglier half the time. The social and store pages could never be more than a mockup. Lessons learned.
 
-- Better content management with Netlify CMS
-- Dark mode
+# Old stuff
 
 ## Netlify CMS
 
@@ -39,9 +40,7 @@ To go from data first to date last, use ``${reverseSlug.slice(11)}_${reverseSlug
 
 #### News Article Pages Styling
 
-The body of articles aren't styled correctly. The markdown is rendered directly as html, so no responsive fonts or custom styling. I attemped to do something using the *interweave* package, but could not get it to work. It might be because it requires a polyfill to work for server side rendering, which is literally in the documentation, but I'm too lazy and it looks fine rn tbh.
-
-This is also why I added global img styling, because I couldn't styling anything from the markdown.
+The body of articles aren't styled correctly. The markdown is rendered directly as html, so no responsive fonts or custom styling. I attemped to do something using the *interweave* package, but could not get it to work. It might be because it requires a polyfill to work for server side rendering. This is also why I added global img styling, because I couldn't styling anything from the markdown.
 
 #### Netlify CMS Collection Specific Media Folders
 
