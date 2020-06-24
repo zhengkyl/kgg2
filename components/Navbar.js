@@ -84,7 +84,6 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     flexDirection: "row-reverse",
     alignItems: 'stretch',
-    maxWidth:theme.breakpoints.width("md"),
   },
   icon: {
     paddingLeft: theme.spacing(1),
